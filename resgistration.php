@@ -81,28 +81,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    // Gender validation
+    
     if (empty($_POST["gender"])) {
         $genderError = "Gender is required";
     } else {
         $gender = sanitizeInput($_POST["gender"]);
     }
 
-    // Country validation
+    
     if (empty($_POST["country"])) {
         $countryError = "Country is required";
     } else {
         $country = sanitizeInput($_POST["country"]);
     }
 
-    // Skills validation
+    
     if (empty($_POST["skills"])) {
         $skillsError = "At least one skill must be selected";
     } else {
         $skills = $_POST["skills"];
     }
 
-    // Biography validation
+    
     if (empty($_POST["biography"])) {
         $biographyError = "Biography is required";
     } else {
@@ -112,12 +112,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    // Check if all fields are valid
+    
     if (empty($nameError) && empty($emailError) && empty($passwordError) && empty($confirmPasswordError) &&
         empty($facebookError) && empty($phoneError) && empty($genderError) && empty($countryError) &&
         empty($skillsError) && empty($biographyError)) {
+
         
-        // Store validated values to the session
         $_SESSION['name'] = $name;
         $_SESSION['email'] = $email;
         $_SESSION['facebook_url'] = $facebook_url;
@@ -127,7 +127,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['skills'] = $skills;
         $_SESSION['biography'] = $biography;
 
-        // Redirect to about.php
+        
         header("Location: about.php");
         exit();
     }
@@ -240,7 +240,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </div>
 
 
-        <!-- Biography -->
         <div class="mb-3">
             <label for="biography" class="form-label">Biography</label>
             <textarea class="form-control <?php echo (!empty($biographyError)) ? 'is-invalid' : ''; ?>" name="biography"><?php echo $biography; ?></textarea>
@@ -251,7 +250,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </form>
 </div>
 
-<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
